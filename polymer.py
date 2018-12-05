@@ -18,8 +18,8 @@ def react(polymer):
 
 with open(sys.argv[1]) as f:
     polymer = f.read()
-
-print(len(react(polymer)))
+polymer = react(polymer)
+print(len(polymer))
 length = len(polymer)
 for i in range(65,91): #dumb way to get the alphabet.
     cur = f'{chr(i)}'
