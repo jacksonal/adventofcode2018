@@ -20,12 +20,15 @@ for coord in parsedCoords:
     miny = min(miny,coord[1])
     maxy = max(maxy,coord[1])
 
+withinrange = 0
 #for each point in the plane, determine which input coordinate is closest
 plane = {}
 for x in range(minx,maxx):
     plane[x] = {}
     for y in range(miny, maxy):
         distances = sorted([(i, distance(parsedCoords[i],(x,y))) for i in range(len(parsedCoords))],key=lambda x:x[1])
+        if sum([x[1] for x in distances]) < 10000: #part 2 find all points within 10000 of all input coordinates
+            withinrange+=1
         if distances[0][1] == distances[1][1]: #no closest coordinate
             plane[x][y] = '.'
         else:
@@ -40,4 +43,7 @@ for x in range(minx,maxx):
             area.pop(plane[x][y])
         elif plane[x][y] in area.keys():
             area[plane[x][y]] += 1
+#part1
 print(max(area.values()))
+#part2
+print(withinrange)
