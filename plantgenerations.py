@@ -13,7 +13,7 @@ for t in rawTransitions:
     transitions[t[:5]] = t[9]
 
 state = initialState
-for gen in range(20:
+for gen in range(20):
     print(f'generation {gen} first plant:{state.find("#")}')
     print(state.lstrip('.'))
     nextState = ""
